@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "title": "Fazer Compras",
+      "isCompleted": true,
+      "id": 1
+    },
+    {
+      "title": "Ler",
+      "isCompleted": true,
+      "id": 2
+    },
+    {
+      "title": "Levar o cachorro para passear",
+      "isCompleted": true,
+      "id": 3
+    },
+    {
+      "title": "Me exercitar",
+      "isCompleted": false,
+      "id": 4
+    },
+    {
+      "title": "Estudar",
+      "isCompleted": false,
+      "id": 5
+    },
+    {
+      "title": "Pagar contas",
+      "isCompleted": false,
+      "id": 6
+    },
+    {
+      "title": "Procurar emprego",
+      "isCompleted": true,
+      "id": 8
+    }
+  ]
+}
