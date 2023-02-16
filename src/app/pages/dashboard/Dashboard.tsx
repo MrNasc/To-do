@@ -9,8 +9,13 @@ import {
 } from "../../shared/services/api/tarefas/TasksService";
 import { InputDate } from "./InputDate";
 
+interface Prop {
+  changeData: SetStateFunction<string>,
+}
 
-export const Dashboard = React.forwardRef<HTMLInputElement>(() => {
+export type SetStateFunction<T> = React.Dispatch<React.SetStateAction<T>>;
+
+export const Dashboard = React.forwardRef<HTMLInputElement>((changeData) => {
   const [list, setList] = useState<ITask[]>([]);
   const [date, setDate] = useState("");
 
@@ -23,7 +28,14 @@ export const Dashboard = React.forwardRef<HTMLInputElement>(() => {
         setList(result);
       }
     });
-  }, [list]);
+  }, []);
+
+  useEffect(() => {
+    changeData(date)
+  }, [date])
+
+  console.log('te', changeData);
+  
 
   const handleToggleComplete = useCallback(
     (id: number) => {
@@ -46,7 +58,7 @@ export const Dashboard = React.forwardRef<HTMLInputElement>(() => {
         }
       });
     },
-    [list]
+    []
   );
 
   const handleDelete = useCallback((id: number) => {

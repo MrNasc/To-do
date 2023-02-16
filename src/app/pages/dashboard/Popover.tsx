@@ -7,12 +7,13 @@ import {
   ITask,
   TasksService,
 } from "../../shared/services/api/tarefas/TasksService";
-import { Dashboard } from "./Dashboard";
 import "/DEV/ToDo/to-do/src/app/styles/popover.css";
 
-export const NewTodoPopover = () => {
+export const NewTodoPopover = (data: any) => {
   const [list, setList] = useState<ITask[]>([]);
 
+  console.log('teste', data);
+  
   const handleInputKeyDown: React.KeyboardEventHandler<HTMLInputElement> =
     useCallback(
       (e) => {
@@ -23,7 +24,7 @@ export const NewTodoPopover = () => {
 
           e.currentTarget.value = "";
 
-          if (list.some((ListItem) => ListItem.title === value)) return; 
+          if (list.some((ListItem) => ListItem.title === value)) return;
 
           TasksService.create({ title: value, isCompleted: false }).then(
             (result) => {
