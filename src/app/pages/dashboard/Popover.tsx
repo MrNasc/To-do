@@ -7,12 +7,12 @@ import {
   ITask,
   TasksService,
 } from "../../shared/services/api/tarefas/TasksService";
-import "/DEV/ToDo/to-do/src/app/styles/popover.css";
+import "../../styles/popover.css";
 
-export const NewTodoPopover = (data: any) => {
+export const NewTodoPopover = (prop: any) => {
   const [list, setList] = useState<ITask[]>([]);
-
-  console.log('teste', data);
+  const { data } = prop;
+  console.log('data', data);
   
   const handleInputKeyDown: React.KeyboardEventHandler<HTMLInputElement> =
     useCallback(

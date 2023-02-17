@@ -1,7 +1,7 @@
 import * as Checkbox from "@radix-ui/react-checkbox";
 import dayjs from "dayjs";
 import { Check } from "phosphor-react";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, Dispatch, SetStateAction } from "react";
 import { ApiException } from "../../shared/services/api/ApiException";
 import {
   ITask,
@@ -10,12 +10,10 @@ import {
 import { InputDate } from "./InputDate";
 
 interface Prop {
-  changeData: SetStateFunction<string>,
+    setData: Dispatch<SetStateAction<string>>;
 }
 
-export type SetStateFunction<T> = React.Dispatch<React.SetStateAction<T>>;
-
-export const Dashboard = React.forwardRef<HTMLInputElement>((changeData) => {
+export const Dashboard = React.forwardRef<HTMLInputElement, Prop>((props) => {
   const [list, setList] = useState<ITask[]>([]);
   const [date, setDate] = useState("");
 
@@ -31,11 +29,8 @@ export const Dashboard = React.forwardRef<HTMLInputElement>((changeData) => {
   }, []);
 
   useEffect(() => {
-    changeData(date)
+    props.setData(date)
   }, [date])
-
-  console.log('te', changeData);
-  
 
   const handleToggleComplete = useCallback(
     (id: number) => {
@@ -134,6 +129,3 @@ export const Dashboard = React.forwardRef<HTMLInputElement>((changeData) => {
     </div>
   );
   });
-
-
-  
