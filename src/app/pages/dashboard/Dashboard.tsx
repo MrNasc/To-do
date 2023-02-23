@@ -9,11 +9,11 @@ import {
 } from "../../shared/services/api/tarefas/TasksService";
 import { InputDate } from "./InputDate";
 
-interface Prop {
+export interface Prop {
     setData: Dispatch<SetStateAction<string>>;
 }
 
-export const Dashboard = React.forwardRef<HTMLInputElement, Prop>((props) => {
+export const Dashboard = React.forwardRef<HTMLInputElement, Prop>((props, ref) => {
   const [list, setList] = useState<ITask[]>([]);
   const [date, setDate] = useState("");
 
@@ -68,12 +68,7 @@ export const Dashboard = React.forwardRef<HTMLInputElement, Prop>((props) => {
     });
   }, []);
 
-  const input = document.getElementById("date-input") as HTMLInputElement;
-  if (input) {
-    input.valueAsDate = new Date();
-    const date = dayjs(input.valueAsDate).format("DD/MM/YYYY");
-    input.value = date;
-  }
+
 
   return (
     <div className="w-full max-w-3xl mx-auto">

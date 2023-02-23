@@ -3,7 +3,7 @@ import React from "react";
 
 interface IInputDateProps {
     value: string;
-    type?: string;
+    type: string;
     onChange: (newValue: string) => void;
     
 }             

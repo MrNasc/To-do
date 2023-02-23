@@ -5,7 +5,7 @@ export interface ITask {
     id: number
     title: string
     isCompleted: boolean
-    dueDate?: Date
+    dueDate: Date
 }
 
 const getAll = async (): Promise<ITask[] | ApiException> => {     

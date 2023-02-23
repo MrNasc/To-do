@@ -9,9 +9,15 @@ import {
 } from "../../shared/services/api/tarefas/TasksService";
 import "../../styles/popover.css";
 
-export const NewTodoPopover = (prop: any) => {
+interface IDate {
+  data: Date  
+}
+
+export const NewTodoPopover = (prop: IDate) => {
   const [list, setList] = useState<ITask[]>([]);
-  const { data } = prop;
+
+  
+  let { data } = prop;
   console.log('data', data);
   
   const handleInputKeyDown: React.KeyboardEventHandler<HTMLInputElement> =
@@ -26,7 +32,7 @@ export const NewTodoPopover = (prop: any) => {
 
           if (list.some((ListItem) => ListItem.title === value)) return;
 
-          TasksService.create({ title: value, isCompleted: false }).then(
+          TasksService.create({ title: value, isCompleted: false, dueDate: data }).then(
             (result) => {
               if (result instanceof ApiException) {
                 alert(result.message);
